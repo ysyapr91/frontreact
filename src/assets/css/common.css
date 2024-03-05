@@ -1,16 +1,16 @@
 .header {
-    display:flex;
     position:relative;
     color: #f1f1f1;
-    height:70px;
+    width:100%;
+    min-height: 100vh;
     background: #2c3e50;
 }
 .content {
     text-align: center;
     position:absolute;
-    top:70px;
+    top:10%;
     width:100%;
-    height:100%;
+    height:80%;
     color: #f1f1f1;
     background-color: #282c34;
 }
@@ -18,6 +18,6 @@
     position:absolute;
     bottom:0;
     width:100%;
-    height:70px;
+    height:10%;
     background:#498ec7;
 }

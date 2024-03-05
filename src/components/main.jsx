@@ -1,16 +1,18 @@
 import 'assets/css/common.css';
+
 import React from 'react';
-import Header from './header';
-import Content from './content';
-import Footer from './footer';
+
+import Header from 'components/header';
+import Content from 'components/content';
+import Footer from 'components/footer';
 
 function Main() {
     return (
-      <div>
+      <>
         <Header></Header>
         <Content></Content>
         <Footer></Footer>
-      </div>
+      </>
     );
   }
 
