@@ -1,6 +1,6 @@
 import React from 'react';
-import TestPage from 'components/test/testPage1.jsx';
-import { Button } from 'bootstrap';
+import { Link } from 'react-router-dom';
+import Test from 'components/tests/test';
 
 function Welcome() {
   const title = 'Welcome';
@@ -11,9 +11,9 @@ function Welcome() {
       <div>
         TEST
       </div>
-        <div>Button</div>
-
+      <Test></Test>
       <br/>
+
       <div>
         VIEW
       </div>
