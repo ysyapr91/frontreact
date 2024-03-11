@@ -7,6 +7,8 @@ function Welcome() {
 
   return (
     <>
+      <div>redux count </div>
+      <TestCounter></TestCounter>
       <TestCounter></TestCounter>
     </>
   );

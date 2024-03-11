@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Test from 'components/tests/test';
 
-function Welcome() {
-  const title = 'Welcome';
+function Home() {
+  const title = 'Home';
   const pageNum = 0;
 
   return (
@@ -11,7 +11,9 @@ function Welcome() {
       <div>
         TEST
       </div>
+      
       <Test></Test>
+
       <br/>
 
       <div>
@@ -21,4 +23,4 @@ function Welcome() {
   );
 }
 
-export default Welcome; 
+export default Home; 
