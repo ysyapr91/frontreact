@@ -5,9 +5,9 @@ const Router = () => {
   return (   
     <Routes>
       <Route path="/" element={<Welcome/>}/>
-      <Route path="/tests/:testId"element={<Tests/>}/>
+      <Route path="/tests/:id"element={<Tests/>}/>
     </Routes>
   )
 }
 
-export default Router;
+export default Router; 

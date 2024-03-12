@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Counter() {
+function TestCounter() {
   const [number, setNumber] = useState(0);
 
   const onIncrease = () => {
@@ -13,11 +13,11 @@ function Counter() {
 
   return (
     <div>
-      <h1>{number}</h1>
+      <h4>[testCounter useState] {number}</h4>
       <button onClick={onIncrease}>+1</button>
       <button onClick={onDecrease}>-1</button>
     </div>
   );
 }
 
-export default Counter;
+export default TestCounter;

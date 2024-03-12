@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Test from 'components/tests/test';
+import { Test } from 'components/tests';
 
 function Home() {
   const title = 'Home';
@@ -8,17 +8,7 @@ function Home() {
 
   return (
     <>
-      <div>
-        TEST
-      </div>
-      
-      <Test></Test>
-
-      <br/>
-
-      <div>
-        VIEW
-      </div>
+      Welcome
     </>
   );
 }

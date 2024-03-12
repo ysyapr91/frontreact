@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { testTodo } from 'reducers/index';
+import { increase, decrease } from 'reducers/test/count';
 
-function Counter() {
-  const [number, setNumber] = useState(0);
+function TestCounterRedux() {
 
-  const onIncrease = () => {
-    setNumber(n => n + 1);
+  const count = useSelector(state => state.testCount);
+  const dispatch = useDispatch();
+
+  const onIncrease = (i) => {
+    dispatch(increase(i));
   }
 
-  const onDecrease = () => {
-    setNumber(n => n - 1);
+  const onDecrease = (i) => {
+    dispatch(decrease(i));
   }
 
   return (
     <div>
-      <h1>{number}</h1>
-      <button id="add" onClick={onIncrease}>+1</button>
-      <button id="minus" onClick={onDecrease}>-1</button>
+      <h4>[testCounter redux] {count.number}</h4>
+      <button onClick={onIncrease}>+1</button>
+      <button  onClick={onDecrease}>-1</button>
     </div>
   );
 }
 
-export default Counter;
+export default TestCounterRedux;

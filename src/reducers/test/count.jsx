@@ -6,26 +6,27 @@ export const getNumber = data => ({ type: GET_NUMBER, payload: data});
 export const increase = i => ({ type: INCREASE, payload: i});
 export const decrease = i => ({ type: DECREASE, payload: i});
 
-const initState = [];
+const initState = {
+    number: 0
+};
 
 export default function testCount(state = initState, action) {
-    let copyState = [...state];
-    console.log(copyState);
+    const s = {...state};
 
     switch(action.type){
         case GET_NUMBER:
-            return copyState;
+            return s;
 
         case INCREASE:
-            copyState[action.payload].num ++;
-            return copyState;
+            s.number++;
+            return s;
 
         case DECREASE:
-            copyState[action.payload].num --;
-            return copyState;
+            s.number--;
+            return s;
 
         default:
-            return state;
+            return s;
     }
 
 }

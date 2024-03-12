@@ -1,17 +1,20 @@
 import React from 'react';
 import TestCounter from 'components/tests/testCounter';
+import TestCounterRedux from 'components/tests/testCounterRedux';
 
-function Welcome() {
+function Test() {
   const title = 'Welcome';
   const pageNum = 0;
 
   return (
     <>
-      <div>redux count </div>
+      <h3> COUNT TEST</h3>
       <TestCounter></TestCounter>
       <TestCounter></TestCounter>
+      <TestCounterRedux></TestCounterRedux>
+      <TestCounterRedux></TestCounterRedux>
     </>
   );
 }
 
-export default Welcome; 
+export default Test; 
