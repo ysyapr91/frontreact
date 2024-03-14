@@ -2,22 +2,16 @@ import React from 'react';
 import 'assets/css/modal.css';
 
 const Modal = ({ children, isOpen, onClose }) => {
-  const modalStyle = {
-    display: "none"
-  };
+  if (!isOpen) return null;
 
-  if (!isOpen) {
-    modalStyle.display = "none";
-    return null;
-  } else {
-    modalStyle.display = "display";
-  }
+  const mStyle = { display: "none" };
+  const mClassName = isOpen ? "modal" : "modal closed";
+  mStyle.display = isOpen ? "display" : "none";
 
   return (
-    <div className="modal" style={modalStyle}>
+    <div className={mClassName} style={mStyle}>
       <div className="modal-content">
         <span className="close" onClick={onClose}>&times;</span>
-        <div className="modal-title">Modal Title</div>
         <div className="modal-content-text">{children}</div>
       </div>
     </div>

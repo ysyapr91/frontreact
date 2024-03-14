@@ -9,7 +9,6 @@ const TestModal = () => {
   });
 
   const toggleModal = (modalName) => {
-    return;
     setModalState(prevState => ({
       ...prevState,
       [modalName]: !prevState[modalName]
@@ -17,17 +16,18 @@ const TestModal = () => {
   };
 
   return (
-    <div>
-      <button onClick={toggleModal('test')}>Open Modal</button>
-      <Common.Modal isOpen={modalState.test.isOpen} onClose={toggleModal('test')}>
+    <>
+      <div>Modal Test</div>
+      <button onClick={() => toggleModal('test')}>Open Test1</button>
+      <Common.Modal isOpen={modalState.test} onClose={() => toggleModal('test')}>
         <Tests.Test></Tests.Test>
       </Common.Modal>
-      <br/><br/>
-      <button onClick={toggleModal('testCounter')}>Open Modal</button>
-      <Common.Modal isOpen={modalState.testCounter.isOpen} onClose={toggleModal('testCounter')}>
+      <br/>
+      <button onClick={() => toggleModal('testCounter')}>Open Test2</button>
+      <Common.Modal isOpen={modalState.testCounter} onClose={() => toggleModal('testCounter')}>
         <Tests.TestCounter></Tests.TestCounter>
       </Common.Modal>
-    </div>
+    </>
   );
 };
 

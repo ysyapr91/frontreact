@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <>
-      <div class="header">
+      <div className="header">
         Header
         <br/>
         [{content.data.pageName}]

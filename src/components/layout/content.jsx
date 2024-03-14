@@ -15,15 +15,15 @@ function Content() {
 
   return (
     <>
-      <div class="content">
+      <div className="content">
         <Pages.Home></Pages.Home>
         <br/>
         <CustomTag>CustomTag</CustomTag>
         <br/>
         <Common.CustomComponent is={content.page}></Common.CustomComponent>
         <br/><br/>
-        <Common.Modal></Common.Modal>
         <Tests.TestModal></Tests.TestModal>
+        <Tests.TestModal2></Tests.TestModal2>
         
         <br/><br/>
         <Tests.TestReduxData></Tests.TestReduxData>

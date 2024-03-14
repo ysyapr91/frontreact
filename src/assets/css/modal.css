@@ -1,6 +1,5 @@
 .modal {
     position: fixed;
-    position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
@@ -9,6 +8,7 @@
     overflow: auto;
     color: #383838;
     background-color: rgba(0,0,0,0.4);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   }
   
   .modal-content {
@@ -17,6 +17,14 @@
     padding: 20px;
     border: 1px solid #383838;
     width: 80%;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+
+  .modal-content.closed {
+    opacity: 0;
+    transform: translateY(20px);
   }
   
   .modal-title {
