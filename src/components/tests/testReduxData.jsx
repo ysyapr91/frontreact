@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setData } from 'reducers/module/treeDataReducer';
+import { setData } from 'reducers/module/dataReducer';
 
 
-function TreeData() {
+function TestReduxData() {
     const content = useSelector(state => state.content);
     const dispatch = useDispatch();
 
@@ -15,12 +15,12 @@ function TreeData() {
     
 
     return (
-    <>
-        <input type="text" name="test1" onChange={onData}></input>
-        <br/>
-        <input type="text" name="test2" onChange={onData}></input>
-    </>
+        <>
+            <input type="text" name="test1" onChange={onData}></input>
+            <br/>
+            <input type="text" name="test2" onChange={onData}></input>
+        </>
     );
 }
 
-export default TreeData;
+export default TestReduxData;

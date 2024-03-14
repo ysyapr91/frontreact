@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Test } from 'components/tests';
+import { Tests } from 'components/tests';
 
 function Home() {
   const title = 'Home';

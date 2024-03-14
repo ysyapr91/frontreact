@@ -1,4 +1,4 @@
-const SET_DATA = 'treeData/SET_DATA';
+const SET_DATA = 'data/SET_DATA';
 
 export const setData = data => ({ type: SET_DATA, payload: data});
 
@@ -6,7 +6,7 @@ const initState = {
     
 };
 
-export default function treeDataReducer(state = initState, action) {
+export default function dataReducer(state = initState, action) {
     const param = {...state};
 
     switch(action.type) {

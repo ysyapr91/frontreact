@@ -1,23 +1,34 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setPage } from 'reducers/module/contentReducer';
+import { setPage, setData} from 'reducers/module/contentReducer';
 
 function Header() {
   const content = useSelector(state => state.content);
   const dispatch = useDispatch();
 
   const onPage = (e) => {
-    let v = e.target.value;
+    let v = content.data.pageName;
     dispatch(setPage(v));
   }
+
+  const onData = (e) => {
+    let k = e.target.getAttribute('name');
+    let v = e.target.value;
+    dispatch(setData({[k]: v}));
+  }
+
+  let contentPage = content.page;
 
   return (
     <>
       <div class="header">
         Header
         <br/>
-        <input type="text" value={content.page} onChange={onPage}></input>
+        [{content.data.pageName}]
+        <br/>
+        <input type="text" name="pageName" onChange={onData}></input>
+        <button onClick={onPage}>change</button>
         <br/>
       </div>
     </>

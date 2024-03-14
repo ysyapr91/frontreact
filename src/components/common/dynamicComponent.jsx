@@ -1,5 +1,7 @@
 import React from "react";
 
+import * as Tests from 'components/tests';
+
 /**
  * @desc the dynamic component is used to render various component dynamically
  * @params props: {
