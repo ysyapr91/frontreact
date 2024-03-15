@@ -24,12 +24,6 @@ function Header() {
     <>
       <div className="header">
         Header
-        <br/>
-        [{content.data.pageName}]
-        <br/>
-        <input type="text" name="pageName" onChange={onData}></input>
-        <button onClick={onPage}>change</button>
-        <br/>
       </div>
     </>
   );

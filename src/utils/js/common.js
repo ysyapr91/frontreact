@@ -1,3 +1,3 @@
-export function chkObject() {
+export default function common() {
     
 }
