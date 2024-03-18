@@ -1,9 +1,8 @@
 /**
- * content.jsx
- * useState 사용 기본형
+ * content2.jsx backup
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, Suspense, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import 'assets/css/common.css';
 import 'assets/css/slideTab.css';
@@ -12,15 +11,26 @@ import * as Pages from 'components/pages';
 import * as Tests from 'components/tests';
 
 function Content() {
-  const [activetab, setActiveTab] = useState(0);
   const content = useSelector(state => state.content);
   const tabbarRef = useRef(null);
-  const tconRef = useRef(null);
   const tabWidth = 100;
-  const items = ['1', '2', '3', '4'];
+  const items = [
+    {page: "HOME", component: <Pages.Home />},
+    {page: "Request", component: <Tests.TestRequest />},
+  ];
 
-  const switchTab = (index) => {
-    setActiveTab(index);
+  const [activetab, setActiveTab] = useState({...items[0], idx: 0});
+
+  const switchTab = (page) => {
+    let idx = items.findIndex((e) => { return e.page == page; })
+    setActiveTab({
+      ...items[idx],
+      idx: idx
+    })
+  };
+
+  const getComponent = () => {
+    return items[activetab.idx].component;
   };
 
   useEffect(() => {
@@ -29,8 +39,6 @@ function Content() {
     }
   }, [tabbarRef]);
 
-  const whichStep = items[activetab];
-
   return (
     <>
       <div className="content">
@@ -38,22 +46,21 @@ function Content() {
           {items.map((tab, index) => (
             <div
               key={index}
-              className={`tabitem ${index === activetab ? 'active' : ''}`}
-              onClick={() => switchTab(index)}
+              className={`tabitem ${tab.page === activetab.page ? 'active' : ''}`}
+              onClick={() => switchTab(tab.page)}
             >
-              {tab}
+              {tab.page}
             </div>
           ))}
           <div
             className="slider"
-            style={{ transform: `translateX(${activetab * tabWidth}px)` }}
+            style={{ transform: `translateX(${activetab.idx * tabWidth}px)` }}
           ></div>
         </div>
-        <div className="tabcontainer" ref={tconRef}>
-          {whichStep === '1' && <Tests.Test />}
-          {whichStep === '2' && <Tests.TestCounter />}
-          {whichStep === '3' && <Tests.TestCounterRedux />}
-          {whichStep === '4' && <Tests.TestReduxData />}
+        <div className="tabcontainer">
+          <Suspense fallback={<div>Loading...</div>}>
+            {getComponent()}
+          </Suspense>
         </div>
       </div> 
     </>

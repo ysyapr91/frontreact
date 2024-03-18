@@ -1,59 +1,56 @@
+import * as Pages from 'components/pages';
+import * as Tests from 'components/tests';
+
 const SET_PAGE = 'content/SET_PAGE';
-const GET_PAGE = 'content/GET_PAGE';
-const SET_MAIN_TAB = 'content/SET_MAIN_TAB';
-const GET_MAIN_TAB = 'content/GET_MAIN_TAB';
-const GET_MAIN_TAB_LIST = 'content/GET_MAIN_TAB_LIST';
+const SET_TAB_IDX = 'content/SET_TAB_IDX';
 const SET_DATA = 'content/SET_DATA';
-const GET_DATA = 'content/GET_DATA';
 
 export const setPage = data => ({ type: SET_PAGE, payload: data});
-export const getPage = data => ({ type: GET_PAGE, payload: data});
-export const setMainTab = data => ({ type: SET_MAIN_TAB, payload: data});
-export const getMainTab = data => ({ type: GET_MAIN_TAB, payload: data});
-export const getMainTabList = data => ({ type: GET_MAIN_TAB_LIST, payload: data});
+export const setTabIdx = data => ({ type: SET_TAB_IDX, payload: data});
 export const setData = data => ({ type: SET_DATA, payload: data});
-export const GetData = data => ({ type: GET_DATA, payload: data});
 
 const initState = {
-    page: "Home",
+    page: "HOME",
     pageList: [],
-    mainTab: "",
-    mainTabList: [],
-    data: {},
+    tabIdx: 1,
+    tabList: [
+        {page: "TEST", component: <Tests.TestReduxData />},
+        {page: "HOME", component: <Pages.Home />},
+        {page: "REQUEST", component: <Tests.TestRequest />},
+        {page: "COUNT", component: <Tests.TestCount />},
+    ],
+    data: {}
 };
 
 export default function contentReducer(state = initState, action) {
-    const param = {...state};
 
     switch(action.type) {
         case SET_PAGE:
-            param.pageList.push(action.payload);
-            param.page = action.payload;
-            return {};
+            return {
+                ...state,
+                pageList: [...state.pageList, action.payload],
+                page: action.payload
+            };
 
-        case GET_PAGE:
-            return param.page;
-
-        case SET_MAIN_TAB:
-            param.mainTab = action.payload;
-            return {};
-
-        case GET_MAIN_TAB:
-            return param.mainTab;
-
-        case GET_MAIN_TAB_LIST:
-            return param.mainTabList;
+        case SET_TAB_IDX:
+            return {
+                ...state,
+                tabIdx: action.payload
+            };
 
         case SET_DATA:
-            if(typeof action.payload == "object") {
-                Object.assign(param.data, action.payload);
+            if (typeof action.payload === "object") {
+                return {
+                    ...state,
+                    data: {
+                        ...state.data,
+                        ...action.payload
+                    }
+                };
             }
-            return {};
-
-        case GET_DATA:
-            return param.data;
+            return state;
 
         default:
-            return param;
+            return state;
     }
 }

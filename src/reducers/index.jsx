@@ -4,6 +4,7 @@ import { combineReducers, legacy_createStore as createStore } from "redux";
 import content from "reducers/module/contentReducer";
 import data from "reducers/module/dataReducer";
 import modal from "reducers/module/modalReducer";
+import request from "reducers/module/requestReducer";
 
 //test module
 import testTodo from "reducers/test/todo";
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   content,
   data,
   modal,
+  request,
   //test module
   testTodo,
   testCount

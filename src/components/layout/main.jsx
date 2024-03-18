@@ -4,11 +4,11 @@ import * as Layout from 'components/layout';
 
 function Main() {
     return (
-      <>
-        <Layout.Header></Layout.Header>
+      <div className="container">
+        <Layout.Header2></Layout.Header2>
         <Layout.Content2></Layout.Content2>
         <Layout.Footer></Layout.Footer>
-      </>
+      </div>
     );
   }
 
