@@ -5,16 +5,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { initList } from 'reducers/module/modalReducer';
 
 const Modal = ({ children, is }) => {
-  const [modalState, setModalState] = useState([0]);
 
-  const mState = useSelector(state => state.modal);
+  const modal = useSelector(state => state.modal);
   const dispatch = useDispatch();
 
   const mStyle = { display: "none" };
-
-  useEffect(() => {
-    console.log("effect mState", mState);
-  }, mState.count);
 
   const onClose = () => {
     dispatch(initList());

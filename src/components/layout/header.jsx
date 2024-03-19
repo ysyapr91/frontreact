@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setPage, setData} from 'reducers/module/contentReducer';
+import { setPage} from 'reducers/module/contentReducer';
 
 function Header() {
   const content = useSelector(state => state.content);
@@ -15,7 +15,6 @@ function Header() {
   const onData = (e) => {
     let k = e.target.getAttribute('name');
     let v = e.target.value;
-    dispatch(setData({[k]: v}));
   }
 
   let contentPage = content.page;

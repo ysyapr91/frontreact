@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { useSelector } from 'react-redux';
+import { pushList } from 'reducers/module/modalReducer';
 
-function Test() {
+function Testsss() {
+  const content = useSelector(state => state.content);
+  //const dispatch = useDispatch();
 
   return (
     <>
+      {content.tabIdx}
+      <br/>
+      {content.tabList[content.tabIdx].page}
     </>
   );
-}
+};
 
-export default Test; 
+export default Testsss;

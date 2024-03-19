@@ -3,27 +3,26 @@ import * as Tests from 'components/tests';
 
 const SET_PAGE = 'content/SET_PAGE';
 const SET_TAB_IDX = 'content/SET_TAB_IDX';
-const SET_DATA = 'content/SET_DATA';
 
 export const setPage = data => ({ type: SET_PAGE, payload: data});
 export const setTabIdx = data => ({ type: SET_TAB_IDX, payload: data});
-export const setData = data => ({ type: SET_DATA, payload: data});
 
 const initState = {
-    page: "HOME",
+    page: null,
     pageList: [],
-    tabIdx: 1,
+    tabIdx: 1, /** header tab 초기값 */
     tabList: [
-        {page: "TEST", component: <Tests.TestReduxData />},
+        {page: "TEST", component: <Tests.Test />},
         {page: "HOME", component: <Pages.Home />},
+        {page: "POPUP", component: <Tests.TestPopup />},
+        {page: "MODAL1", component: <Tests.TestModal1 />},
         {page: "REQUEST", component: <Tests.TestRequest />},
         {page: "COUNT", component: <Tests.TestCount />},
-    ],
-    data: {}
+    ]
 };
 
 export default function contentReducer(state = initState, action) {
-
+    
     switch(action.type) {
         case SET_PAGE:
             return {
@@ -37,19 +36,6 @@ export default function contentReducer(state = initState, action) {
                 ...state,
                 tabIdx: action.payload
             };
-
-        case SET_DATA:
-            if (typeof action.payload === "object") {
-                return {
-                    ...state,
-                    data: {
-                        ...state.data,
-                        ...action.payload
-                    }
-                };
-            }
-            return state;
-
         default:
             return state;
     }

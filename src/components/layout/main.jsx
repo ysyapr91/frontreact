@@ -1,6 +1,7 @@
 import 'assets/css/common.css';
 import React from 'react';
 import * as Layout from 'components/layout';
+import * as Tests from 'components/tests';
 
 function Main() {
     return (

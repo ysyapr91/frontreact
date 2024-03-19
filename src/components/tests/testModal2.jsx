@@ -7,7 +7,7 @@ import { pushList } from 'reducers/module/modalReducer';
 
 const TestModal = () => {
 
-  const mState = useSelector(state => state.modal);
+  const modal = useSelector(state => state.modal);
   const dispatch = useDispatch();
 
   const onPush = (e) => {
@@ -17,6 +17,8 @@ const TestModal = () => {
   return (
     <>
       <div>Modal Test 2</div>
+
+      {modal.list}<br/>
       <button onClick={() => onPush('test')}>Open Test1</button>
       <Common.Modal2 is="test">
         <Tests.Test></Tests.Test>

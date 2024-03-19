@@ -1,30 +1,20 @@
 /**
  * content2.jsx
- * useState, Suspense 사용
- * Tab부분 데이터화 
+ * useSelector, Suspense 사용
+ * Tab - header부에 설정 contentReducer를 통해 연결 
  */
 
-import React, { useState, Suspense, useRef, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { Suspense } from 'react';
+import { useSelector } from 'react-redux';
+import { setPage } from 'reducers/module/contentReducer';
 import 'assets/css/common.css';
 import 'assets/css/slideTab.css';
 
 function Content() {
   const content = useSelector(state => state.content);
-  const dispatch = useDispatch();
-  const tabbarRef = useRef(null);
-  const tabWidth = 100;
-  const items = content.tabList;
-
   const getComponent = () => {
-    return items[content.tabIdx].component;
+    return content.page;
   };
-
-  useEffect(() => {
-    if(tabbarRef.current) {
-      tabbarRef.current.style.setProperty('--tabwidth', `${tabWidth}px`);
-    }
-  }, [tabbarRef]);
 
   return (
     <>

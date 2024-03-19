@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-//import { setData, getTab, getTabList} from 'reducers/module/contentReducer';
+
 
 function TestReduxData() {
     const content = useSelector(state => state.content);

@@ -7,7 +7,7 @@ const TEST_HOST = "https://jsonplaceholder.typicode.com";
 
 
 export default function request() {
-    
+
 
     return {
         testGetAxios: (url, data, callback) => {
@@ -18,7 +18,7 @@ export default function request() {
                     console.log("res " + url, res);
                     callback(res);
                 })
-                .catch(function (err) {
+                .catch(function (err) { 
                     alert(err)
                 });
         },

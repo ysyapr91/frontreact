@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPage, setData, setTabIdx } from 'reducers/module/contentReducer';
+import { setPage } from 'reducers/module/contentReducer';
+import { pushList } from 'reducers/module/modalReducer';
 
 function Header() {
   const content = useSelector(state => state.content);
@@ -10,7 +11,6 @@ function Header() {
 
   const items = content.tabList;
   const [activetab, setActiveTab] = useState({...items[content.tabIdx], idx: content.tabIdx});
-  let item = items[content.tabIdx];
 
   const switchTab = (page) => {
     let idx = items.findIndex((e) => { return e.page == page; })
@@ -18,7 +18,8 @@ function Header() {
       ...items[idx],
       idx: idx
     })
-    dispatch(setTabIdx(idx))
+    dispatch(setPage(items[idx].component))
+    dispatch(pushList('??'));
   };
 
   useEffect(() => {

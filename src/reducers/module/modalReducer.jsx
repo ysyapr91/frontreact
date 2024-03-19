@@ -11,18 +11,22 @@ const initState = {
 }
 
 export default function modalReducer(state = initState, action) {
-    const param = {...state};
 
     switch(action.type) {
         case INIT_LIST:
-            param.list = [];
-            return param;
+            return {
+                list: [],
+                count: 0
+            };
 
         case PUSH_LIST:
-            param.list.push(action.payload);
-            return param;
+            return {
+                ...state,
+                list: [...state.list, action.payload],
+                count: state.count++
+            };
 
         default:
-            return param;
+            return state;
     }
 }
