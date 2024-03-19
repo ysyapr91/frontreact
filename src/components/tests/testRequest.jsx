@@ -9,11 +9,33 @@ const App = () => {
     data: {}
   });
 
-  const call = () => {
-    
-    request().testGetAxios(param.url, param.data, (res) => {
+  const chk = (ver) => {
+    console.log("url", param.url);
+    console.log("data", param.data);
+  }
+
+  const call = (ver) => {
+    if(ver == 'T') {
+      request().testGetAxios(param.url, param.data, (res) => {
       
-    }) 
+      }) 
+    } else {
+      request().getAxios(param.url, param.data, (res) => {
+      
+      }) 
+    }
+  };
+
+  const test = (ver) => {
+    if(ver == 'T') {
+      request().testGetAxios('typicode/demo/posts', {}, (res) => {
+      
+      }) 
+    } else {
+      request().getAxios('', param.data, (res) => {
+      
+      }) 
+    }
   };
 
   const onUrl = (e) => {
@@ -33,18 +55,6 @@ const App = () => {
       data: e.target.value
     })
   }
-
-  const chk = (e) => {
-    console.log("request", request().getAxios);
-    console.log("url", param.url);
-    console.log("data", param.data);
-  }
-
-  const test = (url) => {
-    request().testGetAxios('/typicode/demo/posts', {}, (res) => {
-      
-    }) 
-  };
 
   return (
     <>
@@ -69,11 +79,15 @@ const App = () => {
         </tbody>
       </table>
 
-      <br/>
-
-      <button onClick={() => call('')}>call</button>
-      <button onClick={() => chk('')}>chk</button>
-      <button onClick={() => test('')}>test</button>
+      <button onClick={() => chk()}>chk</button>
+      <br/><br/>
+      TEST : https://jsonplaceholder.typicode.com <br/>
+      <button onClick={() => call('T')}>call</button>
+      <button onClick={() => test('T')}>test</button>
+      <br/><br/>
+      NODE : <br/>
+      <button onClick={() => call('N')}>call</button>
+      <button onClick={() => test('N')}>test</button>
     </>
   );
 };
