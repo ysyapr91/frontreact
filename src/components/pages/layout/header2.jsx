@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPage } from 'reducers/module/contentReducer';
-import { pushList } from 'reducers/module/modalReducer';
 
 function Header() {
   const content = useSelector(state => state.content);
@@ -17,9 +16,8 @@ function Header() {
     setActiveTab({
       ...items[idx],
       idx: idx
-    })
-    dispatch(setPage(items[idx].component))
-    dispatch(pushList('??'));
+    });
+    dispatch(setPage(items[idx].component));
   };
 
   useEffect(() => {

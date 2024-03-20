@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { pushList } from 'reducers/module/modalReducer';
+
+import { Popup } from 'components/common';
+import * as Tests from 'components/tests';
 
 const TestPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,14 +13,11 @@ const TestPopup = () => {
 
   return (
     <div className="popup-container">
-      <button onClick={togglePopup}>팝업 열기</button>
+      <button onClick={togglePopup}>팝업 열기</button> 
       {isOpen && (
-        <div className="popup">
-          <div className="popup-content">
-            <h2>팝업 내용</h2>
-            <p>팝업 내용을 입력하세요.</p>
-          </div>
-        </div>
+        <Popup isOpen={isOpen} setIsOpen={setIsOpen}>
+          <Tests.Test></Tests.Test>
+        </Popup>
       )}
     </div>
   );

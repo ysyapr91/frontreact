@@ -4,13 +4,13 @@ import * as Tests from 'components/tests';
 const SET_PAGE = 'content/SET_PAGE';
 const SET_TAB_IDX = 'content/SET_TAB_IDX';
 
-export const setPage = data => ({ type: SET_PAGE, payload: data});
-export const setTabIdx = data => ({ type: SET_TAB_IDX, payload: data});
+export const setPage = d => ({ type: SET_PAGE, payload: d});
+export const setTabIdx = d => ({ type: SET_TAB_IDX, payload: d});
 
 const initState = {
     page: null,
     pageList: [],
-    tabIdx: 1, /** header tab 초기값 */
+    tabIdx: 0, /** header tab 초기값 */
     tabList: [
         {page: "TEST", component: <Tests.Test />},
         {page: "HOME", component: <Pages.Home />},
@@ -37,6 +37,6 @@ export default function contentReducer(state = initState, action) {
                 tabIdx: action.payload
             };
         default:
-            return state;
+            return {...state};
     }
 }

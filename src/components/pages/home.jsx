@@ -1,8 +1,7 @@
 import React from 'react';
+import { pushList } from 'reducers/module/modalReducer';
 
 function Home() {
-  const title = 'Home';
-  const pageNum = 0;
 
   return (
     <>

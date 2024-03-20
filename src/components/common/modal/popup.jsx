@@ -1,19 +1,26 @@
 import React from 'react';
 import 'assets/css/popup.css';
 
-const Popup = ({ children, isOpen, onClose }) => {
+function Popup({ children, isOpen, setIsOpen }) {
   if (!isOpen) return null;
 
-  const mStyle = { display: "none" };
-  const mClassName = isOpen ? "modal" : "modal closed";
-  mStyle.display = isOpen ? "display" : "none";
+  let popupStyle = {}
+  let popupContentStyle = {}
+  if (isOpen) {
+    //popupStyle = {right: '0%'}
+    //popupContentStyle = {right: '0%'}
+  }
+
+  const closePopup = () => {
+    setIsOpen(false);
+  }
 
   return (
-    <div className={mClassName} style={mStyle}>
-    <div className="modal-content">
-        <span className="close" onClick={onClose}>&times;</span>
-        <div className="modal-content-text">{children}</div>
-    </div>
+    <div className="popup" style={ popupStyle }>
+      <div className="popup-content" style={ popupContentStyle }>
+      <span className="close-button" onClick={() => closePopup()} >X</span>
+        {children}
+      </div>
     </div>
   );
 };

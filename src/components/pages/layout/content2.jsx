@@ -6,10 +6,6 @@
 
 import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { setPage } from 'reducers/module/contentReducer';
-import 'assets/css/common.css';
-import 'assets/css/slideTab.css';
-
 function Content() {
   const content = useSelector(state => state.content);
   const getComponent = () => {
