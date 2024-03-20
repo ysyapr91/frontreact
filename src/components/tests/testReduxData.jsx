@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 function TestReduxData() {
-    const content = useSelector(state => state.content);
+    const data = useSelector(state => state.data);
     const dispatch = useDispatch();
 
     const onData = (e) => {

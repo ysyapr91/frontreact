@@ -3,7 +3,8 @@ const SET_DATA = 'data/SET_DATA';
 export const setData = data => ({ type: SET_DATA, payload: data});
 
 const initState = {
-    data: {}
+    data: {},
+    pData: {},
 };
 
 export default function dataReducer(state = initState, action) {

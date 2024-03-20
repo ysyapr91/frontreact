@@ -24,12 +24,25 @@ const TestPopup = () => {
     }));
   };
 
+  const [popList2, setPopList2] = useState({
+    isOpen: false,
+    idx: 0,
+    list: [<Tests.TestReduxData />, <Tests.TestReduxData />, <Tests.TestReduxData />, <Tests.TestReduxData />, <Tests.TestReduxData />]
+  });
+
+  const togglePopList2 = () => {
+    setPopList2(prev => ({
+      ...prev,
+      isOpen: !prev.isOpen
+    }));
+  };
+
   let onData = {
     count: 0
   }
 
   return (
-    <div className="popup-container">
+    <>
       <button onClick={togglePopup}>팝업 열기</button> 
       {isOpen && (
         <Popup isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -41,7 +54,12 @@ const TestPopup = () => {
       {popList.isOpen && (
         <PopupList state={popList} set={setPopList} data={onData}/>
       )}
-    </div>
+      <br/><br/>
+      <button onClick={togglePopList2}>리스트2 팝업 열기</button> 
+      {popList2.isOpen && (
+        <PopupList state={popList2} set={setPopList2} data={onData}/>
+      )}
+    </>
   );
 };
 
