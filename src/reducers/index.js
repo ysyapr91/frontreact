@@ -1,12 +1,13 @@
 /** root reducer */
 import { combineReducers, legacy_createStore as createStore } from "redux";
 //module
-import content from "reducers/module/contentReducer";
 import data from "reducers/module/dataReducer";
 import modal from "reducers/module/modalReducer";
 import request from "reducers/module/requestReducer";
+import view from "reducers/module/viewReducer";
 
 //test module
+import content from "reducers/module/contentReducer";
 import testTodo from "reducers/test/todo";
 import testCount from "reducers/test/count";
 
@@ -14,11 +15,12 @@ import testCount from "reducers/test/count";
 // store에 저장되는 리듀서는 오직 1개입니다.
 const rootReducer = combineReducers({
   //module
-  content,
   data,
   modal,
   request,
+  view,
   //test module
+  content,
   testTodo,
   testCount
 });

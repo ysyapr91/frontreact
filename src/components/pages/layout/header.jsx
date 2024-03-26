@@ -1,25 +1,45 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setPage } from 'reducers/module/viewReducer';
 
 function Header() {
-  const content = useSelector(state => state.content);
+  const view = useSelector(state => state.view);
   const dispatch = useDispatch();
+  const tabbarRef = useRef(null);
+  const tabWidth = 100;
 
-  const onPage = (e) => {
-    let v = content.data.pageName;
-  }
+  const items = view.pageList.mainTab;
+  const [tabIdx, setTabIdx] = useState(0);
 
-  const onData = (e) => {
-    let k = e.target.getAttribute('name');
-    let v = e.target.value;
-  }
+  const switchTab = (idx) => {
+    setTabIdx({idx});
+    dispatch(setPage('main', items[idx].component));
+  };
 
-  let contentPage = content.page;
+  useEffect(() => {
+    if(tabbarRef.current) {
+      tabbarRef.current.style.setProperty('--tabwidth', `${tabWidth}px`);
+    }
+  }, [tabbarRef]);
 
   return (
     <>
       <div className="header">
-        Header
+        <div className="tabs" ref={tabbarRef}>
+            {items.map((tab, idx) => (
+              <div
+                key={idx}
+                className={`tabitem ${idx === tabIdx ? 'active' : ''}`}
+                onClick={() => switchTab(idx)}
+              >
+                {tab.page}
+              </div>
+            ))}
+            <div
+              className="slider"
+              style={{ transform: `translateX(${tabIdx * tabWidth}px)` }}
+            ></div>
+          </div>
       </div>
     </>
   );
