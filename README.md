@@ -1,6 +1,13 @@
-React 구조설계
-# 실행 방법
+# frontreact
 
+> React Example project
+
+## Build Setup
+
+``` bash
+# install dependencies
 npm install
 
+# serve reload
 npm start
+```
